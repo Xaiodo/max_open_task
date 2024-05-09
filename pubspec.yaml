@@ -7,8 +7,11 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
+  bloc: ^8.1.4
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.5
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +20,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: e-Ukraine
+      fonts:
+        - asset: assets/fonts/e-Ukraine-Bold.otf
+        - asset: assets/fonts/e-Ukraine-Regular.otf
+        - asset: assets/fonts/e-Ukraine-Light.otf
+        - asset: assets/fonts/e-Ukraine-Medium.otf
+        - asset: assets/fonts/e-Ukraine-Thin.otf
+        - asset: assets/fonts/e-Ukraine-UltraLight.otf
+    
