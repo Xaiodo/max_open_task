@@ -51,7 +51,7 @@ class NameScreenView extends StatelessWidget {
                 child: BlocConsumer<NameScreenCubit, NameScreenState>(
                   listener: (context, state) {
                     if (state.isNavigate) {
-                      Navigator.of(context).pushNamed(
+                      Navigator.of(context).pushReplacementNamed(
                         NameScreenConstants.homeRoute,
                         arguments: state.name,
                       );
