@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:max_open_task/src/pages/home_screen/view/home_screen_view.dart';
 import 'package:max_open_task/src/pages/name_screen/view/name_screen_view.dart';
+import 'package:max_open_task/src/values/app_constants.dart';
 import 'package:max_open_task/src/values/app_theme.dart';
 
 void main() {
@@ -15,6 +17,9 @@ class MainApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       theme: theme,
+      routes: {
+        NameScreenConstants.homeRoute: (context) => const HomeScreenView(),
+      },
       home: const NameScreenView(),
     );
   }
