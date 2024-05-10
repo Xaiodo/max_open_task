@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +31,8 @@ flutter:
         - asset: assets/fonts/e-Ukraine-Medium.otf
         - asset: assets/fonts/e-Ukraine-Thin.otf
         - asset: assets/fonts/e-Ukraine-UltraLight.otf
+  
+  assets:
+    - assets/images/
+    - assets/icons/
     
