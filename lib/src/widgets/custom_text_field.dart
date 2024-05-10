@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(16)),
             borderSide: BorderSide(
               color: AppColors.primary,
-              width: 2,
+              width: 1,
             ),
           ),
           enabledBorder: const OutlineInputBorder(
@@ -47,5 +47,6 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         obscureText: obscureText,
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
+        style: Theme.of(context).textTheme.inputText,
       );
 }

@@ -39,4 +39,9 @@ extension AppTextTheme on TextTheme {
         color: AppColors.white.withOpacity(0.6),
         fontWeight: FontWeight.w300,
       );
+  TextStyle get inputText => const TextStyle(
+        color: AppColors.white,
+        fontWeight: FontWeight.w300,
+        fontSize: 12,
+      );
 }
