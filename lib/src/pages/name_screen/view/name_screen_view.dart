@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_open_task/src/pages/name_screen/cubit/name_screen_cubit.dart';
+import 'package:max_open_task/src/pages/name_screen/cubit/name_screen_state.dart';
+import 'package:max_open_task/src/values/app_colors.dart';
 import 'package:max_open_task/src/values/app_strings.dart';
 
 import '../../../values/app_constants.dart';
@@ -40,15 +44,57 @@ class NameScreenView extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                  height: NameScreenConstants.afterAddressTextSpacing),
-              const CustomTextField(
-                hintText: AppStrings.nameHint,
+                height: NameScreenConstants.afterAddressTextSpacing,
               ),
-              const Spacer(),
-              ElevatedButton(
-                onPressed: () {},
-                style: Theme.of(context).elevatedButtonTheme.style,
-                child: const Text(AppStrings.continueText),
+              BlocProvider(
+                create: (context) => NameScreenCubit(),
+                child: BlocConsumer<NameScreenCubit, NameScreenState>(
+                  listener: (context, state) {
+                    if (state.isNavigate) {
+                      Navigator.of(context)
+                          .pushNamed(NameScreenConstants.homeRoute);
+                    }
+                  },
+                  builder: (context, state) {
+                    return Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CustomTextField(
+                            hintText: AppStrings.nameHint,
+                            onChanged:
+                                context.read<NameScreenCubit>().updateName,
+                          ),
+                          const Spacer(),
+                          SizedBox(
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: state.isNameValid
+                                  ? context
+                                      .read<NameScreenCubit>()
+                                      .continueButtonPressed
+                                  : () {},
+                              child: state.isLoading
+                                  ? const SizedBox(
+                                      height:
+                                          NameScreenConstants.indicatorHeight,
+                                      width: NameScreenConstants.indicatorWidth,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        backgroundColor: Colors.transparent,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                AppColors.white),
+                                      ),
+                                    )
+                                  : const Text(AppStrings.continueText),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
               const SizedBox(height: NameScreenConstants.basicSpacing),
             ],
