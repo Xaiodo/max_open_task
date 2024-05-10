@@ -10,11 +10,16 @@ final theme = ThemeData(
   fontFamily: 'e-Ukraine',
   textTheme: textTheme,
   elevatedButtonTheme: elevatedButtonTheme,
+  bottomNavigationBarTheme: bottomNavigationBarTheme,
 );
 
 const textTheme = TextTheme(
   bodyLarge: TextStyle(
     fontSize: 19,
+    fontWeight: FontWeight.w700,
+  ),
+  bodyMedium: TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w700,
   ),
   bodySmall: TextStyle(
@@ -34,6 +39,12 @@ final elevatedButtonTheme = ElevatedButtonThemeData(
   ),
 );
 
+const bottomNavigationBarTheme = BottomNavigationBarThemeData(
+  backgroundColor: AppColors.background,
+  selectedItemColor: AppColors.white,
+  unselectedItemColor: AppColors.unselectedItemColor,
+);
+
 extension AppTextTheme on TextTheme {
   TextStyle get inputTextHint => TextStyle(
         color: AppColors.white.withOpacity(0.6),
@@ -43,5 +54,23 @@ extension AppTextTheme on TextTheme {
         color: AppColors.white,
         fontWeight: FontWeight.w300,
         fontSize: 12,
+      );
+  TextStyle get homeScreenTitle => const TextStyle(
+        color: AppColors.white,
+        fontWeight: FontWeight.w500,
+        fontSize: 15,
+      );
+  TextStyle get homeScreenSubtitle => TextStyle(
+        color: AppColors.white.withOpacity(0.6),
+        fontWeight: FontWeight.w300,
+        fontSize: 8,
+      );
+  TextStyle get homeScreenCardText => const TextStyle(
+        color: AppColors.white,
+        fontWeight: FontWeight.w500,
+        fontSize: 10,
+      );
+  TextStyle get homeScreenCardTextGreen => homeScreenCardText.copyWith(
+        color: AppColors.primary,
       );
 }
