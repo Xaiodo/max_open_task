@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_open_task/src/pages/name_screen/view/name_screen_view.dart';
+import 'package:max_open_task/src/pages/name_screen/view/name_screen_page.dart';
 import 'package:max_open_task/src/values/app_theme.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const NameScreenView(),
+      home: const NameScreenPage(),
     );
   }
 }
