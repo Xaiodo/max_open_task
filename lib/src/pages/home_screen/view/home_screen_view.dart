@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_open_task/src/pages/home_screen/cubit/home_screen_cubit.dart';
+import 'package:max_open_task/src/pages/home_screen/cubit/home_screen_state.dart';
 import 'package:max_open_task/src/pages/home_screen/widgets/bottom_nav_widget.dart';
 import 'package:max_open_task/src/pages/home_screen/widgets/card_widget.dart';
 import 'package:max_open_task/src/pages/home_screen/widgets/geolocation_widget.dart';
@@ -16,51 +19,72 @@ class HomeScreenView extends StatelessWidget {
       color: AppColors.primary,
       child: SafeArea(
         child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.vertical(
-                        bottom:
-                            Radius.circular(HomeScreenConstants.borderRadius),
-                      ),
-                      color: AppColors.primary,
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      bottom:
+                          Radius.circular(HomeScreenConstants.cardBorderRadius),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: HomeScreenConstants.sidePadding,
-                        right: HomeScreenConstants.sidePadding,
-                        bottom: HomeScreenConstants.bottomPadding,
-                      ),
-                      child: Column(
-                        children: [
-                          const LogoWithPhoneWidget(),
-                          CardWidget(username: username),
-                        ],
-                      ),
-                    ),
+                    color: AppColors.primary,
                   ),
-                  const GeolocationWidget(),
-                  Padding(
+                  child: Padding(
                     padding: const EdgeInsets.only(
                       left: HomeScreenConstants.sidePadding,
                       right: HomeScreenConstants.sidePadding,
+                      bottom: HomeScreenConstants.bottomPadding,
                     ),
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(19),
-                          ),
+                    child: Column(
+                      children: [
+                        const LogoWithPhoneWidget(),
+                        CardWidget(username: username),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: HomeScreenConstants.marginHorizontal),
+                BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                    builder: (context, state) {
+                  if (state.status.isLoading) {
+                    return const GeolocationWidget(isLoading: true);
+                  } else if (state.status.isConnectivityOrLocationError) {
+                    return const GeolocationWidget(
+                      isConnectivityOrLocationError: true,
+                    );
+                  } else if (state.status.isInitial) {
+                    return const GeolocationWidget(
+                      isInitial: true,
+                    );
+                  } else {
+                    return const GeolocationWidget();
+                  }
+                }),
+                const SizedBox(height: HomeScreenConstants.marginHorizontal),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: HomeScreenConstants.sidePadding,
+                    right: HomeScreenConstants.sidePadding,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          HomeScreenConstants.buttonBorderRadius,
                         ),
-                        child: const Text('Викликати майстра')),
-                  )
-                ],
-              ),
+                      ),
+                    ),
+                    child: const Text(HomeScreenConstants.homeScreenButtonText),
+                  ),
+                )
+              ],
             ),
-            bottomNavigationBar: const BottomNavWidget()),
+          ),
+          bottomNavigationBar: const BottomNavWidget(),
+        ),
       ),
     );
   }
