@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_open_task/src/pages/home_screen/view/home_screen_view.dart';
+import 'package:max_open_task/src/pages/home_screen/view/home_screen_page.dart';
 import 'package:max_open_task/src/pages/name_screen/view/name_screen_page.dart';
 import 'package:max_open_task/src/values/app_constants.dart';
 import 'package:max_open_task/src/values/app_theme.dart';
@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
       theme: theme,
       home: const NameScreenPage(),
       routes: {
-        NameScreenConstants.homeRoute: (context) => const HomeScreenView(),
+        NameScreenConstants.homeRoute: (context) => const HomeScreenPage(),
       },
     );
   }
