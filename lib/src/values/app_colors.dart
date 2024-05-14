@@ -6,6 +6,8 @@ abstract class AppColors {
   static const onSecondary = Color(0xff6E6E6E);
   static const textInputBackground = Color(0xff292929);
   static const unselectedItemColor = Color(0xff6E6E6E);
+  static const onContainerBackground = Color(0xff383838);
+  static final onContainer = const Color(0xff000000).withOpacity(0.7);
 
   static const white = Color(0xffffffff);
   static const black = Color(0xff000000);

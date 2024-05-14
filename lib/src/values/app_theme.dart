@@ -67,7 +67,7 @@ extension AppTextTheme on TextTheme {
       );
   TextStyle get homeScreenCardText => const TextStyle(
         color: AppColors.white,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w200,
         fontSize: 10,
       );
   TextStyle get homeScreenCardTextGreen => homeScreenCardText.copyWith(
