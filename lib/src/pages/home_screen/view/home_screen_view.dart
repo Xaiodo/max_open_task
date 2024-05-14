@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:max_open_task/src/pages/home_screen/cubit/home_screen_cubit.dart';
 import 'package:max_open_task/src/pages/home_screen/cubit/home_screen_state.dart';
@@ -8,6 +9,7 @@ import 'package:max_open_task/src/pages/home_screen/widgets/geolocation_widget.d
 import 'package:max_open_task/src/pages/home_screen/widgets/logo_with_phone_widget.dart';
 import 'package:max_open_task/src/values/app_colors.dart';
 import 'package:max_open_task/src/values/app_constants.dart';
+import 'package:max_open_task/src/values/app_theme.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({super.key});
@@ -31,18 +33,19 @@ class HomeScreenView extends StatelessWidget {
                     ),
                     color: AppColors.primary,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: HomeScreenConstants.sidePadding,
-                      right: HomeScreenConstants.sidePadding,
-                      bottom: HomeScreenConstants.bottomPadding,
-                    ),
-                    child: Column(
-                      children: [
-                        const LogoWithPhoneWidget(),
-                        CardWidget(username: username),
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      const LogoWithPhoneWidget(),
+                      const SizedBox(height: HomeScreenConstants.spacing),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: HomeScreenConstants.sidePadding,
+                          right: HomeScreenConstants.sidePadding,
+                          bottom: HomeScreenConstants.bottomPadding,
+                        ),
+                        child: CardWidget(username: username),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: HomeScreenConstants.marginHorizontal),
@@ -77,7 +80,11 @@ class HomeScreenView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: const Text(HomeScreenConstants.homeScreenButtonText),
+                    child: Text(
+                      HomeScreenConstants.homeScreenButtonText,
+                      style:
+                          Theme.of(context).textTheme.homeScreenCardTextAddCar,
+                    ),
                   ),
                 )
               ],

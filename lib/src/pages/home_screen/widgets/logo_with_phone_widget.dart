@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:max_open_task/src/values/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:max_open_task/src/values/app_constants.dart';
+import 'package:max_open_task/src/values/app_theme.dart';
 
 class LogoWithPhoneWidget extends StatelessWidget {
   const LogoWithPhoneWidget({super.key});
@@ -9,18 +11,20 @@ class LogoWithPhoneWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          const Text('logo'),
+          Text(
+            HomeScreenConstants.logoText,
+            style: Theme.of(context).textTheme.homeScreenTitle,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.phone_outlined,
-                    color: AppColors.white,
+                  icon: SvgPicture.asset(
+                    HomeScreenConstants.phoneIconPath,
                   ),
-                ),
+                )
               ],
             ),
           ),

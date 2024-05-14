@@ -57,7 +57,7 @@ extension AppTextTheme on TextTheme {
       );
   TextStyle get homeScreenTitle => const TextStyle(
         color: AppColors.white,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         fontSize: 15,
       );
   TextStyle get homeScreenSubtitle => TextStyle(
@@ -72,5 +72,10 @@ extension AppTextTheme on TextTheme {
       );
   TextStyle get homeScreenCardTextGreen => homeScreenCardText.copyWith(
         color: AppColors.primary,
+      );
+  TextStyle get homeScreenCardTextAddCar => homeScreenCardText.copyWith(
+        color: AppColors.white,
+        fontWeight: FontWeight.w300,
+        fontSize: 13,
       );
 }

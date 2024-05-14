@@ -39,7 +39,10 @@ abstract class HomeScreenConstants {
   static const String carImagePath = 'assets/images/image.png';
   static const String wifiIconPath = 'assets/icons/wifi.svg';
   static const String geolocationImagePath = 'assets/images/location.png';
+  static const String phoneIconPath = 'assets/icons/phone.svg';
   static const double imageScale = 0.5;
+
+  static const String logoText = 'logo';
 
   static const String homeScreenCardTitle = 'Привіт, \n';
   static const String homeScreenCardSubtitle = 'Додавання авто';
