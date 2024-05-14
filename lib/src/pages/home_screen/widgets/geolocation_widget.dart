@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:max_open_task/src/pages/home_screen/cubit/home_screen_cubit.dart';
 import 'package:max_open_task/src/values/app_colors.dart';
 import 'package:max_open_task/src/values/app_constants.dart';
 import 'package:max_open_task/src/values/app_theme.dart';
@@ -113,7 +113,9 @@ class GeolocationWidget extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () => context
+                                        .read<HomeScreenCubit>()
+                                        .checkConnectivityAndLocation(),
                                     child: Text(
                                       HomeScreenConstants
                                           .homeContainerTextConfigureGeolocation,
