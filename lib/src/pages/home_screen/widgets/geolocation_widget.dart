@@ -44,9 +44,8 @@ class GeolocationWidget extends StatelessWidget {
                 ),
               ),
             ),
-            child: !isConnectivityOrLocationError
-                ? null
-                : Container(
+            child: isConnectivityOrLocationError || isLoading
+                ? Container(
                     decoration: BoxDecoration(
                       color: AppColors.onContainer,
                       borderRadius: const BorderRadius.all(
@@ -136,7 +135,8 @@ class GeolocationWidget extends StatelessWidget {
                               )
                             ],
                           ),
-                  ),
+                  )
+                : null,
           ),
         ],
       );
