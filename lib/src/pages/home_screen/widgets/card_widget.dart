@@ -12,10 +12,12 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
           color: AppColors.background,
-          borderRadius: BorderRadius.circular(HomeScreenConstants.borderRadius),
+          borderRadius:
+              BorderRadius.circular(HomeScreenConstants.cardBorderRadius),
           image: const DecorationImage(
-            image: AssetImage(HomeScreenConstants.imageAssetPath),
+            image: AssetImage(HomeScreenConstants.carImagePath),
             scale: HomeScreenConstants.imageScale,
+            alignment: Alignment.centerRight,
           ),
         ),
         child: Padding(
@@ -27,7 +29,7 @@ class CardWidget extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Привіт, \n',
+                      text: HomeScreenConstants.homeScreenCardTitle,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     TextSpan(
@@ -42,14 +44,14 @@ class CardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Додавання авто',
+                    HomeScreenConstants.homeScreenCardSubtitle,
                     style: Theme.of(context).textTheme.homeScreenSubtitle,
                   ),
-                  const SizedBox(height: HomeScreenConstants.innerSpacing),
+                  const SizedBox(height: HomeScreenConstants.topPadding),
                   FractionallySizedBox(
                     widthFactor: HomeScreenConstants.fractionWidth,
                     child: Text(
-                      'Завантажте дані про ваше авто для кращого використання сервісу.',
+                      HomeScreenConstants.homeScreenCardText,
                       style: Theme.of(context).textTheme.homeScreenCardText,
                     ),
                   ),
@@ -65,7 +67,7 @@ class CardWidget extends StatelessWidget {
                             minimumSize: Size.zero,
                           ),
                           child: Text(
-                            'Додати авто',
+                            HomeScreenConstants.homeScreenCardTextAddCar,
                             style: Theme.of(context)
                                 .textTheme
                                 .homeScreenCardTextGreen,
