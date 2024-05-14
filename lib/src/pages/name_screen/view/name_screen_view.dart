@@ -4,6 +4,7 @@ import 'package:max_open_task/src/pages/name_screen/cubit/name_screen_cubit.dart
 import 'package:max_open_task/src/pages/name_screen/cubit/name_screen_state.dart';
 import 'package:max_open_task/src/values/app_colors.dart';
 import 'package:max_open_task/src/values/app_strings.dart';
+import 'package:max_open_task/src/values/app_theme.dart';
 
 import '../../../values/app_constants.dart';
 import '../../../widgets/custom_text_field.dart';
@@ -15,7 +16,6 @@ class NameScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: NameScreenConstants.horizontalPadding,
@@ -57,7 +57,7 @@ class NameScreenView extends StatelessWidget {
             ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: BlocConsumer<NameScreenCubit, NameScreenState>(
           listener: (context, state) {
             if (state.isNavigate) {
@@ -73,27 +73,28 @@ class NameScreenView extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: NameScreenConstants.horizontalPadding,
                 right: NameScreenConstants.horizontalPadding,
-                bottom: NameScreenConstants.basicSpacing,
               ),
               child: ElevatedButton(
                 onPressed: state.isNameValid
                     ? context.read<NameScreenCubit>().continueButtonPressed
                     : () {},
-                child: state.isLoading
-                    ? const SizedBox(
-                        height: NameScreenConstants.indicatorHeight,
-                        width: NameScreenConstants.indicatorWidth,
-                        child: CircularProgressIndicator(
+                child: SizedBox(
+                  height: NameScreenConstants.indicatorHeight,
+                  width: state.isLoading
+                      ? NameScreenConstants.indicatorWidth
+                      : null,
+                  child: state.isLoading
+                      ? const CircularProgressIndicator(
                           strokeWidth: 2,
                           backgroundColor: Colors.transparent,
                           valueColor:
                               AlwaysStoppedAnimation<Color>(AppColors.white),
+                        )
+                      : Text(
+                          AppStrings.continueText,
+                          style: Theme.of(context).textTheme.buttonText,
                         ),
-                      )
-                    : Text(
-                        AppStrings.continueText,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
+                ),
               ),
             );
           },
