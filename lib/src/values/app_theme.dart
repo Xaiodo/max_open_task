@@ -55,6 +55,11 @@ extension AppTextTheme on TextTheme {
         fontWeight: FontWeight.w300,
         fontSize: 12,
       );
+  TextStyle get buttonText => const TextStyle(
+        color: AppColors.white,
+        fontWeight: FontWeight.w400,
+        fontSize: 13,
+      );
   TextStyle get homeScreenTitle => const TextStyle(
         color: AppColors.white,
         fontWeight: FontWeight.w400,
