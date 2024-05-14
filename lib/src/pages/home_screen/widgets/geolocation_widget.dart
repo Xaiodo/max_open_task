@@ -112,9 +112,9 @@ class GeolocationWidget extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   InkWell(
-                                    onTap: () => context
+                                    onTap: context
                                         .read<HomeScreenCubit>()
-                                        .checkConnectivityAndLocation(),
+                                        .checkConnectivityAndLocation,
                                     child: Text(
                                       HomeScreenConstants
                                           .homeContainerTextConfigureGeolocation,
